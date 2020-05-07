@@ -33,10 +33,11 @@ class Api < Cli
 
 
   def self.request_systems_from_edsm(search_center, search_radius)
-    url = "https://www.edsm.net/api-v1/sphere-systems\?systemName=#{search_center}\&radius=#{search_radius}"
+    url = "https://www.edsm.net/api-v1/sphere-systems\?systemName=#{search_center}\&radius=#{search_radius}\&showPrimaryStar=1"
     uri = URI.parse(url)      
     uri.open
     request_result = uri.open   
+    #binding.pry
     json_parse = JSON.parse(request_result.string)   
     #binding.pry 
     puts json_parse

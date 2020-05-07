@@ -27,15 +27,15 @@ class Cli
     $search_location = gets.chomp
     puts "---------------------"
     puts "Please enter max search radius:"
-      max_search_radius = gets.to_i
-      if max_search_radius == 0
+      $max_search_radius = gets.to_i
+      if $max_search_radius == 0
         puts "We need an integer greater than zero, Commander"
-        max_search_radius = gets.to_i
+        $max_search_radius = gets.to_i
       end
     #binding.pry
     puts "---------------------"
     self.scraperforchris
-    Api.request_systems_from_edsm(@search_location, @max_search_radius)
+    Api.request_systems_from_edsm($search_location, $max_search_radius)
   end
 
   def self.scraperforchris
