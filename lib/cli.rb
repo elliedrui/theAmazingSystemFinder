@@ -6,23 +6,23 @@
 
 class Cli
 
-  attr_accessor :name, :system, :location
+  attr_accessor :name, :system, :search_location, :system_search_parameter
 
   
 
   def initialize
     @name=name
     @system=system
-    @location=location
-    
+    @search_location=search_location    
+    @system_search_parameter=system_search_parameter
   end
 
 
-  def GreetCommander
+  def self.GreetCommander
     puts "---------------------"
     puts "Greeting Commander!"
-    puts "Please enter your location:"
-    location = gets.chomp
+    puts "Please enter your search center:"
+    search_location = gets.chomp
     puts "---------------------"
   end
 
