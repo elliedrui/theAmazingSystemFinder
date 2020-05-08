@@ -6,58 +6,58 @@
 
 class Cli
 
-  attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius
+  attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius, :animation, :print_greeting
 
   
 
   def initialize
     @name=name
-    # @system=system
     @search_location=search_location    
     @system_search_parameter=system_search_parameter
     @max_search_radius=max_search_radius
   end
 
 
-  def self.GreetCommander
-    system "clear"
-    puts "---------------------"
-    puts "Greetings Commander!"
-    puts "Please enter your search center:"
-    $search_location = gets.chomp
-    puts "---------------------"
-    puts "Please enter max search radius:"
-      $max_search_radius = gets.to_i 
-      if $max_search_radius == 0
-        puts "We need an integer greater than zero, Commander"
-        $max_search_radius = gets.to_i
-      end
-    #binding.pry
-    puts "---------------------"
-    self.scraperforchris
+  def self.greet_commander
+    Display_main.print_greeting
+    
     Api.request_systems_from_edsm($search_location, $max_search_radius)
   end
 
-  def self.scraperforchris
-    system "clear"
-    20.times do
-      puts "scraping..........\\"
-      sleep(0.03)
-      system "clear"
-      puts "scraping..........\\"
-      sleep(0.03)
-      system "clear"
-      puts "scraping..........|"
-      sleep(0.03)
-      system "clear"
-      puts "scraping........../"
-      sleep(0.03)
-      system "clear"
-      puts "scraping..........-"
-      sleep(0.03)
-      system "clear"
+  def self.main_menu
+    Display_main.disp_main_menu
+    input = gets.to_i
+    case input
+    when 1
+      Display_search.disp_search_menu
+      #mmm maybe this just sends to the search menu handler instead
+    when 2
+
+    when 3
+
+    when 4
+
+    else
+      reject_input
+      main_menu
     end
-    
+
+    def reject_input
+      puts "I'm sorry, that is not a valid option, please select again."
+    end
+
   end
+
+  
+
+
+
+ 
+
+  def take_menu_input
+ 
+  end
+
+    
 
 end

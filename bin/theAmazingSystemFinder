@@ -3,11 +3,20 @@ require 'pry'
 require_relative '../lib/cli.rb'
 require_relative '../lib/api.rb'
 require_relative '../lib/system.rb'
+require_relative '../lib/animation.rb'
+require_relative '../lib/menus/main_menu/displayers/disp_main_1.rb'
+require_relative '../lib/menus/search_menu/displayers/disp_search.rb'
+require_relative '../lib/menus/main_menu/handlers/main_1.rb'
+require_relative '../lib/menus/main_menu/handlers/main_2.rb'
+require_relative '../lib/menus/main_menu/handlers/main_3.rb'
+require_relative '../lib/menus/main_menu/handlers/main_4.rb'
+require_relative '../lib/menus/main_menu/handlers/main_5.rb'
 
 
 #binding.pry
 
 
-Cli.GreetCommander
+Cli.greet_commander
+Cli.main_menu
 
 #Cli.scraperforchris
