@@ -17,7 +17,7 @@ require 'json'
 
 # json_parse.select {|item| item["primaryStar"]["type"]=="M (Red dwarf) Star"}    //this would return an array of systems in a 10ly radius of deciat that have red dwarf stars
 
-class Api < Cli
+class Api
 
   attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius
   
@@ -33,12 +33,13 @@ class Api < Cli
 
 
   def self.request_systems_from_edsm(search_center, search_radius)
+    puts "Fetching API Scraper"
     url = "https://www.edsm.net/api-v1/sphere-systems\?systemName=#{search_center}\&radius=#{search_radius}\&showPrimaryStar=1"
     uri = URI.parse(url)      
     uri.open
     request_result = uri.open   
     #binding.pry
-    json_parse = JSON.parse(request_result.string)   
+    json_parse = JSON.parse(request_result.read)   
     #binding.pry 
     json_parse.each do |system|
       puts system

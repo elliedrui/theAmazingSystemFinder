@@ -52,20 +52,27 @@ class Cli
     when 2
       take_search_radius
     when 3
-      Systems.all
+      view_params
       wait_for_enter
+      search_menu
     when 4
-      Systems.all.clear
-      # make a clear mthod that prints an all clear method
-    when 5
       clear_params
       search_menu
+    when 5
+      Systems.all
+      wait_for_enter
+      disp_search_menu
     when 6
-      Api.request_systems_from_edsm($search_location, $max_search_radius)
-      #this needs to display them in a numbered list then give the option to add the chosen one to the Systems.all
+      Systems.all.clear
+      # make a clear mthod that prints an all clear method
     when 7
-      main_menu
+      Api.request_systems_from_edsm($search_location, $search_radius)
+      #this needs to display them in a numbered list then give the option to add the chosen one to the Systems.all
+      wait_for_enter
+      disp_search_menu
     when 8
+      main_menu
+    when 9
       exit_method
     else
       reject_input
@@ -104,6 +111,13 @@ class Cli
       puts "Search Parameters cleared!"
       wait_for_enter
     end
+
+    def self.view_params
+      puts "Current Paramaters are"
+      puts "System: #{$search_location.capitalize}"
+      puts "Radius: #{$search_radius}"
+    end
+
 
     def self.wait_for_enter
       print "press enter to continue"                                                                                                    
