@@ -4,10 +4,7 @@ class Display_main
     Animation.loading_anim
     puts "Please choose an option:"
     puts "1. Search Menu"   
-    puts "2. View Saved Systems"
-    puts "3. Clear Saved Systems"
-    puts "4. Exit"
-    puts "5. placeholder"
+    puts "2. Exit"
     print_line
   end
 

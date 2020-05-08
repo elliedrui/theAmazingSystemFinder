@@ -40,7 +40,9 @@ class Api < Cli
     #binding.pry
     json_parse = JSON.parse(request_result.string)   
     #binding.pry 
-    puts json_parse
+    json_parse.each do |system|
+      puts system
+    end
   end
 
 

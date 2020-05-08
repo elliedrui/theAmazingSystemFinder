@@ -44,4 +44,27 @@ class Animation
     end
   end
 
+  def self.exit_anim
+    system "clear"
+    21.times do
+      puts "exiting scraper..........\\"
+      sleep(0.02)
+      system "clear"
+      puts "exiting scraper..........\\"
+      sleep(0.02)
+      system "clear"
+      puts "exiting scraper..........|"
+      sleep(0.02)
+      system "clear"
+      puts "exiting scraper........../"
+      sleep(0.02)
+      system "clear"
+      puts "exiting scraper..........-"
+      sleep(0.02)
+      system "clear"
+    end
+  end
+  
+
+
 end
