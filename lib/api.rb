@@ -17,7 +17,11 @@ require 'json'
 
 # json_parse.select {|item| item["primaryStar"]["type"]=="M (Red dwarf) Star"}    //this would return an array of systems in a 10ly radius of deciat that have red dwarf stars
 
-class Api
+# i need to give option to save/push a selected system to an array
+# show less info on first diplay, give a Show Details option
+
+
+class Api < Cli
 
   attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius
   
@@ -41,8 +45,12 @@ class Api
     #binding.pry
     json_parse = JSON.parse(request_result.read)   
     #binding.pry 
+    i = 1
+    system "clear"
+    puts "Here are your search results, Commander:"
     json_parse.each do |system|
-      puts system
+      puts "#{i}: #{system}"
+      i+=1
     end
   end
 

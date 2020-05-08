@@ -6,15 +6,15 @@
 
 class Cli
 
-  attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius, :animation, :print_greeting
+  attr_accessor :name, :search_location, :search_radius, :animation, :print_greeting, :disp_search_menu
 
   
 
   def initialize
     @name=name
     @search_location=search_location    
-    @system_search_parameter=system_search_parameter
-    @max_search_radius=max_search_radius
+    # @system_search_parameter=system_search_parameter
+    @search_radius=search_radius
   end
 
 
@@ -37,9 +37,7 @@ class Cli
       main_menu
     end
 
-    def self.reject_input
-      puts "I'm sorry, that is not a valid option, please select again."
-    end
+    
 
   end
 
@@ -61,7 +59,7 @@ class Cli
     when 5
       Systems.all
       wait_for_enter
-      disp_search_menu
+      search_menu
     when 6
       Systems.all.clear
       # make a clear mthod that prints an all clear method
@@ -69,7 +67,7 @@ class Cli
       Api.request_systems_from_edsm($search_location, $search_radius)
       #this needs to display them in a numbered list then give the option to add the chosen one to the Systems.all
       wait_for_enter
-      disp_search_menu
+      search_menu
     when 8
       main_menu
     when 9
@@ -124,5 +122,9 @@ class Cli
       STDIN.getc 
     end
 
+    def self.reject_input
+      puts "I'm sorry, that is not a valid option, please select again."
+      wait_for_enter
+    end
 
 end
