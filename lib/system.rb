@@ -30,7 +30,7 @@ class Systems
 
   def self.add_system(selection_input)
     #binding.pry
-    @@all << $json_parse[selection_input]
+    @@all << $json_parse[selection_input-1]
   end
 
   def self.clear_all
