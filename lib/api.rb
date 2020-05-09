@@ -23,7 +23,7 @@ require 'json'
 
 class Api < Cli
 
-  attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius
+  attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius, :json_parse
   
   
 
@@ -43,17 +43,21 @@ class Api < Cli
     uri.open
     request_result = uri.open   
     #binding.pry
-    json_parse = JSON.parse(request_result.read)   
+    $json_parse = JSON.parse(request_result.read)   
     #binding.pry 
+  end
+
+  def self.display_api_results
     i = 1
     system "clear"
+    Cli.print_line
     puts "Here are your search results, Commander:"
-    json_parse.each do |system|
+    $json_parse.each do |system|
       puts "#{i}: #{system}"
       i+=1
     end
+    Cli.print_line
   end
-
 
 
 end

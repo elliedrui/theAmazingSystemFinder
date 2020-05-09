@@ -6,7 +6,7 @@
 
 class Cli
 
-  attr_accessor :name, :search_location, :search_radius, :animation, :print_greeting, :disp_search_menu
+  attr_accessor :name, :search_location, :search_radius, :animation, :print_greeting, :disp_search_menu, :results_menu, :add_system_to_array#, :json_parse
 
   
 
@@ -20,8 +20,6 @@ class Cli
 
   def self.greet_commander
     Display_main.print_greeting
-    
-    
   end
 
   def self.main_menu
@@ -36,9 +34,6 @@ class Cli
       reject_input
       main_menu
     end
-
-    
-
   end
 
   def self.search_menu
@@ -57,17 +52,13 @@ class Cli
       clear_params
       search_menu
     when 5
-      Systems.all
-      wait_for_enter
+      view_systems
       search_menu
     when 6
-      Systems.all.clear
-      # make a clear mthod that prints an all clear method
-    when 7
-      Api.request_systems_from_edsm($search_location, $search_radius)
-      #this needs to display them in a numbered list then give the option to add the chosen one to the Systems.all
-      wait_for_enter
+      clear_systems
       search_menu
+    when 7
+      results_menu
     when 8
       main_menu
     when 9
@@ -78,6 +69,30 @@ class Cli
     end
   end
 
+  def self.results_menu
+    Display_results.disp_results_menu
+    input = gets.to_i
+    case input
+    when 1
+      add_system_to_array
+      results_menu
+    when 2
+      view_systems
+      results_menu
+    when 3
+      clear_systems
+      results_menu
+    when 4
+      search_menu
+    when 5
+      main_menu
+    when 6
+      exit_method
+    else
+      reject_input
+      results_menu
+    end
+  end
   
   def self.exit_method
     system "clear"
@@ -126,5 +141,26 @@ class Cli
       puts "I'm sorry, that is not a valid option, please select again."
       wait_for_enter
     end
+
+    def self.print_line
+      puts "---------------------"
+    end
+
+   def self.view_systems
+    Systems.all
+    wait_for_enter
+   end
+
+  def self.clear_systems
+    Systems.clear_all
+  end
+
+def self.add_system_to_array
+  puts "Select the system number:"
+  selection_input = gets.to_i
+  Systems.add_system(selection_input)
+end
+
+
 
 end

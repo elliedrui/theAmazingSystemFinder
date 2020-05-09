@@ -11,7 +11,8 @@ require_relative '../lib/menus/main_menu/handlers/main_2.rb'
 require_relative '../lib/menus/main_menu/handlers/main_3.rb'
 require_relative '../lib/menus/main_menu/handlers/main_4.rb'
 require_relative '../lib/menus/main_menu/handlers/main_5.rb'
-
+require_relative '../lib/menus/results_menu/displayers/disp_result_1.rb'
+require_relative '../lib/menus/results_menu/handlers/results_1.rb'
 
 #binding.pry
 
