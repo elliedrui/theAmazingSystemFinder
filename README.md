@@ -1,8 +1,10 @@
 # TheAmazingSystemFinder
 
 Welcome to Commander Chumboat's Amazing System Finder! This carefully crafted Ruby gem contains a menu driven system for searching  the Elite Dangerous Star Map(EDSM) API for sphere searches and returns information about the systems within a user defined radius of a user defined center point. Users are able to save selected systems to an array and view that array when they desire and clear the list when they are done. 
+
 In coming updates I plan to add additional search functionality as well as the ability to selectively remove saved systems from the array as opposed to a full clear. 
-Fly Dangerously Commander! o7
+
+Fly Dangerously Commander! O7
 
 ## Installation
 
