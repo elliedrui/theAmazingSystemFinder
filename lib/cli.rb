@@ -12,7 +12,7 @@ class Cli
 
   def self.greet_commander
     Display_main.print_greeting
-    sleep (1)
+    sleep (3)
   end
 
   def self.main_menu
