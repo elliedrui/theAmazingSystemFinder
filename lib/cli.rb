@@ -2,18 +2,12 @@
 
 class Cli
 
- attr_accessor :name, :search_location, :search_radius, :animation, :print_greeting, :disp_search_menu, :results_menu, :add_system_to_array
-
-  def initialize
-    @name=name
-    @search_location=search_location    
-    @search_radius=search_radius
-  end
-
   def self.first_run
     Animation.loading_anim
     greet_commander
     call_main_menu
+    $search_radius = 15
+    $search_location = 'sol'
   end
 
   def self.greet_commander

@@ -2,22 +2,9 @@ require 'net/http'
 require 'open-uri'
 require 'json'
 
-class Api < Cli
+class Api 
 
-  attr_accessor :name, :search_location, :system_search_parameter, :max_search_radius, :search_radius, :json_parse
-  
-  
-
-  def initialize
-    @name=name
-  
-    @search_location=search_location    
-    @system_search_parameter=system_search_parameter
-    @max_search_radius=max_search_radius
-  end
-
-
-  def self.request_systems_from_edsm(search_center="sol", search_radius=15)
+  def self.request_systems_from_edsm(search_center, search_radius)
     puts "Fetching API Scraper"
     url = "https://www.edsm.net/api-v1/sphere-systems\?systemName=#{search_center}\&radius=#{search_radius}\&showPrimaryStar=1"
     uri = URI.parse(url)      

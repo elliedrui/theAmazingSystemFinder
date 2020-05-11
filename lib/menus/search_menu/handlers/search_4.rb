@@ -5,7 +5,7 @@ class Search_4
     $search_location = ""
     system "clear"
     puts "Search Parameters cleared!"
-    wait_for_enter
+    Cli.wait_for_enter
   end
   
 end
