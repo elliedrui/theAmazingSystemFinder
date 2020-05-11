@@ -4,7 +4,7 @@ Welcome to Commander Chumboat's Amazing System Finder! This carefully crafted Ru
 
 In coming updates I plan to add additional search functionality as well as the ability to selectively remove saved systems from the array as opposed to a full clear. 
 
-Fly Dangerously Commander! O7
+Fly Dangerously Commanders! O7
 
 ## Installation
 
