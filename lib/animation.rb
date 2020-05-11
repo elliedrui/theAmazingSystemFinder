@@ -2,7 +2,7 @@
 
 class Animation
 
-  @anim_text_ing = ["sraping","loading","fetching", "pinging"]
+  @anim_text_ing = ["scraping","loading","fetching", "pinging"]
   @anim_text_er = ["scraper","loader", "fetcher",]
   @anim_char_array = ["-","\\","|","/","-"]
 
