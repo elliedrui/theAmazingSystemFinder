@@ -1,10 +1,8 @@
 
 class Display_search
 
-
-
   def self.disp_search_menu
-    Animation.loading_anim
+    Animation.scraperforchris
     system "clear"
     puts "Please choose an option:"
     puts "1. Enter Search Center System"   
@@ -16,11 +14,7 @@ class Display_search
     puts "7. View Search Results"
     puts "8. Main Menu"
     puts "9. Exit Program"
-    print_line
-  end
-
-  def self.print_line
-    puts "---------------------"
+    Cli.print_line
   end
 
 end

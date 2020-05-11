@@ -4,20 +4,31 @@ require_relative '../lib/cli.rb'
 require_relative '../lib/api.rb'
 require_relative '../lib/system.rb'
 require_relative '../lib/animation.rb'
+
+# main menu relatives
 require_relative '../lib/menus/main_menu/displayers/disp_main_1.rb'
-require_relative '../lib/menus/search_menu/displayers/disp_search.rb'
 require_relative '../lib/menus/main_menu/handlers/main_1.rb'
 require_relative '../lib/menus/main_menu/handlers/main_2.rb'
-require_relative '../lib/menus/main_menu/handlers/main_3.rb'
-require_relative '../lib/menus/main_menu/handlers/main_4.rb'
-require_relative '../lib/menus/main_menu/handlers/main_5.rb'
+
+# search menu relatives
+require_relative '../lib/menus/search_menu/handlers/search_1.rb'
+require_relative '../lib/menus/search_menu/handlers/search_2.rb'
+require_relative '../lib/menus/search_menu/handlers/search_3.rb'
+require_relative '../lib/menus/search_menu/handlers/search_4.rb'
+require_relative '../lib/menus/search_menu/handlers/search_5.rb'
+require_relative '../lib/menus/search_menu/handlers/search_6.rb'
+require_relative '../lib/menus/search_menu/handlers/search_7.rb'
+require_relative '../lib/menus/search_menu/handlers/search_8.rb'
+require_relative '../lib/menus/search_menu/handlers/search_9.rb'
+require_relative '../lib/menus/search_menu/displayers/disp_search.rb'
+
+#results menu relatives
 require_relative '../lib/menus/results_menu/displayers/disp_result_1.rb'
 require_relative '../lib/menus/results_menu/handlers/results_1.rb'
+require_relative '../lib/menus/results_menu/handlers/results_2.rb'
+require_relative '../lib/menus/results_menu/handlers/results_3.rb'
+require_relative '../lib/menus/results_menu/handlers/results_4.rb'
+require_relative '../lib/menus/results_menu/handlers/results_5.rb'
+require_relative '../lib/menus/results_menu/handlers/results_6.rb'
 
-#binding.pry
-
-
-Cli.greet_commander
-Cli.main_menu
-
-#Cli.scraperforchris
+Cli.first_run

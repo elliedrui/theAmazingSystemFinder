@@ -17,15 +17,13 @@ class Api < Cli
   end
 
 
-  def self.request_systems_from_edsm(search_center, search_radius)
+  def self.request_systems_from_edsm(search_center="sol", search_radius=15)
     puts "Fetching API Scraper"
     url = "https://www.edsm.net/api-v1/sphere-systems\?systemName=#{search_center}\&radius=#{search_radius}\&showPrimaryStar=1"
     uri = URI.parse(url)      
     uri.open
     request_result = uri.open   
-    #binding.pry
     $json_parse = JSON.parse(request_result.read)   
-    #binding.pry 
   end
 
   def self.display_api_results

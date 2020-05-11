@@ -1,22 +1,20 @@
-# we should greet the user then test to make sure the edsm api is responding by calling the method in the api class
-# maybe get location for search center at this time
-# there should be a selection list for the type of search we want to make, this will be limited for brevity
-# should then return the requested values
-# build the saving function for storing and give an option for new search or see saved. once fuicntionality == true add search fanciness
+
 
 class Cli
 
-  attr_accessor :name, :search_location, :search_radius, :animation, :print_greeting, :disp_search_menu, :results_menu, :add_system_to_array#, :json_parse
-
-  
+ attr_accessor :name, :search_location, :search_radius, :animation, :print_greeting, :disp_search_menu, :results_menu, :add_system_to_array
 
   def initialize
     @name=name
     @search_location=search_location    
-    # @system_search_parameter=system_search_parameter
     @search_radius=search_radius
   end
 
+  def self.first_run
+    Animation.loading_anim
+    greet_commander
+    call_main_menu
+  end
 
   def self.greet_commander
     Display_main.print_greeting
@@ -24,49 +22,49 @@ class Cli
   end
 
   def self.main_menu
-    Display_main.disp_main_menu
     input = gets.to_i
     case input
     when 1
-      search_menu
+      Main_1.call_search_menu
     when 2
-      exit_method
+      Main_2.exit_program
     else
       reject_input
-      main_menu
+      call_main_menu
     end
   end
 
   def self.search_menu
-    Display_search.disp_search_menu
     input = gets.to_i
     case input
     when 1
-      take_search_location
+      Search_1.take_search_location
+      call_search_menu
     when 2
-      take_search_radius
+      Search_2.take_search_radius
+      call_search_menu
     when 3
-      view_params
+      Search_3.view_params
       wait_for_enter
-      search_menu
+      call_search_menu
     when 4
-      clear_params
-      search_menu
+      Search_4.clear_params
+      call_search_menu
     when 5
-      view_systems
-      search_menu
+      Search_5.view_systems
+      call_search_menu
     when 6
-      clear_systems
-      search_menu
+      Search_6.clear_systems
+      call_search_menu
     when 7
-      results_menu
+      Search_7.get_results_menu
     when 8
-      main_menu
+      Search_8.goto_main_menu
     when 9
-      exit_method
+      Search_9.exit_program
     else
       reject_input
-      search_menu
+      call_search_menu
     end
   end
 
@@ -75,23 +73,23 @@ class Cli
     input = gets.to_i
     case input
     when 1
-      add_system_to_array
-      results_menu
+      Results_1.add_system_to_array
+      call_results_menu
     when 2
-      view_systems
-      results_menu
+      Results_2.view_systems
+      call_results_menu
     when 3
-      clear_systems
-      results_menu
+      Results_3.clear_systems
+      call_results_menu
     when 4
-      search_menu
+      Results_4.call_search_menu
     when 5
-      main_menu
+      Results_5.call_main_menu
     when 6
-      exit_method
+      Results_6.exit_program
     else
       reject_input
-      results_menu
+      call_results_menu
     end
   end
   
@@ -103,65 +101,33 @@ class Cli
     system "clear"
   end
 
-
-  def self.take_search_location
-    system "clear"
-    puts "Please enter your Search System:"
-    $search_location = gets.chomp
-    search_menu
+  def self.wait_for_enter
+    print "press enter to continue"                                                                                                    
+    STDIN.getc 
   end
 
-  def self.take_search_radius
-    system "clear"
-    puts "Please enter your Search Radius:"
-    $search_radius = gets.chomp
-    search_menu
-  end
-
-    def self.clear_params
-      $search_radius = 0
-      $search_location = ""
-      system "clear"
-      puts "Search Parameters cleared!"
-      wait_for_enter
-    end
-
-    def self.view_params
-      puts "Current Paramaters are"
-      puts "System: #{$search_location.capitalize}"
-      puts "Radius: #{$search_radius}"
-    end
-
-
-    def self.wait_for_enter
-      print "press enter to continue"                                                                                                    
-      STDIN.getc 
-    end
-
-    def self.reject_input
-      puts "I'm sorry, that is not a valid option, please select again."
-      wait_for_enter
-    end
-
-    def self.print_line
-      puts "---------------------"
-    end
-
-   def self.view_systems
-    Systems.all
+  def self.reject_input
+    puts "I'm sorry, that is not a valid option, please select again."
     wait_for_enter
-   end
-
-  def self.clear_systems
-    Systems.clear_all
   end
 
-def self.add_system_to_array
-  puts "Select the system number:"
-  selection_input = gets.to_i
-  Systems.add_system(selection_input)
-end
+  def self.print_line
+    puts "---------------------"
+  end
 
+  def self.call_main_menu
+    Display_main.disp_main_menu
+    main_menu
+  end
 
+  def self.call_search_menu
+    Display_search.disp_search_menu
+    search_menu
+  end
+
+  def self.call_results_menu
+    Display_results.disp_results_menu
+    results_menu
+  end
 
 end
